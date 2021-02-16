@@ -12,10 +12,10 @@
     --avatar-size: 36px;
 
     /* Font Size */
-    --font-large: 20px;
-    --font-medium: 16px;
-    --font-samll: 14px;
-    --font-micro: 12px;
+    --font-large: 25px;
+    --font-medium: 20px;
+    --font-samll: 18px;
+    --font-micro: 16px;
 }
 
 * {
@@ -57,6 +57,11 @@ header .logo i {
     color: var(--red-color);
 }
 
+header .icons {
+    margin-top: 3px;
+    font-size: 20px;
+}
+
 header .icons .fa-search {
     margin-right: var(--padding);
 }
@@ -75,7 +80,7 @@ header .icons .fa-search {
     max-width: 1000px;
 }
 
-.info {
+body > .infoAndUpNext > .info {
     padding: var(--padding);
 }
 
@@ -95,15 +100,23 @@ header .icons .fa-search {
 
 .info .metadata .titleAndButton .title {
     font-size: var(--font-medium);
+    margin-right: var(--padding);
+}
+
+.info .metadata .titleAndButton .title.clamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    margin-right: var(--padding);
 }
 
 .info .metadata .titleAndButton .moreBtn {
     height: 100%;
+    transition: transform 300ms ease-in-out;
+}
+
+.info .metadata .titleAndButton .moreBtn.clicked {
+    transform: rotate(180deg);
 }
 
 .info .metadata .views {
@@ -128,7 +141,7 @@ header .icons .fa-search {
 .info .actions button i {
     margin: 0 auto;
     margin-bottom: calc(var(--padding) / 2);
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .info .actions button i.active {
@@ -139,6 +152,7 @@ header .icons .fa-search {
 .info .channel {
     display: flex;
     justify-content: space-between;
+    padding: 15px 0px;
     border-top: 1px solid var(--grey-light-color);
     border-bottom: 1px solid var(--grey-light-color);
 }
@@ -152,6 +166,7 @@ header .icons .fa-search {
     width: var(--avatar-size);
     height: var(--avatar-size);
     border-radius: 50%;
+    margin-right: var(--padding);
 }
 
 .info .channel .metadata .info {
@@ -187,18 +202,23 @@ header .icons .fa-search {
 }
 .upNext .item {
     display: flex;
+    margin-top: var(--padding);
 }
 
 .upNext .item .img {
-    flex: 1 1 35%;
+    flex: 1 1 25%;
+
+    margin-right: var(--padding);
 }
 
 .upNext .item .img img {
     width: 100%;
+    object-fit: contain;
+    background-color: var(--black-color);
 }
 
 .upNext .item .info {
-    flex: 1 1 60%;
+    flex: 1 1 70%;
 }
 
 .upNext .item .moreBtn {
@@ -207,4 +227,34 @@ header .icons .fa-search {
 
 .upNext .item .info {
     display: flex;
+    flex-direction: column;
+}
+
+.upNext .item .info .title {
+    font-size: var(--font-medium);
+}
+
+.upNext .item .info .name,
+.upNext .item .info .views {
+    font-size: var(--font-micro);
+    color: var(--grey-dark-color);
+}
+
+.infoAndUpNext {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 1000px) {
+    .infoAndUpNext {
+        flex-direction: row;
+    }
+    .infoAndUpNext .info {
+        flex: 1 1 50%;
+    }
+    .infoAndUpNext .upNext {
+        flex: 1 1 50%;
+        padding: var(--padding);
+        border-left: 1px solid var(--grey-dark-color);
+    }
 }
